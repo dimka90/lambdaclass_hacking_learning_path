@@ -345,19 +345,15 @@ When the time comes to start one of the projects:
 - Branches:
   - Immediately create a `dev` branch, in addition to the `main` one. Learning projects have two separate phases: the first is active development. During this phase your PRs should branch from `dev`, and once reviewed by other members of the group following the Hacking Learning Path be merged into `dev`. Once your MVP has been achieved and all the base functionality implemented, create another PR from `dev` into `main` with the entirety of the code developed during the first phase. This PR will be reviewed by more senior members. Address any corrections and once this PR is merged into `main` the project can be considered complete.
   - When tackling an issue, immediately create a branch for it, push it and open a PR in draft mode. Having an open PR that is not yet up to review is a good practice because it allows following the work, and provides a venue for discussion and comments even before a review takes place. 
-  - At Lambda, repositories are automatically configured to delete branches once corresponding PRs are merged. Since learning projects are done under your username, you must either configure this yourself or delete branches manually after merging. Allowing stale branches to accumulate is a bad practice that hinders review. 
+  - At Lambda, repositories are automatically configured to delete branches once corresponding PRs are merged. Since learning projects are done under your user account, you must either configure this yourself or delete branches manually after merging. Allowing stale branches to accumulate is generally considered a bad practice. 
   - Another requirement is configuring branch protections for `main` and `dev` branches. Your CI must have jobs for ensuring that the code is formatted correctly according to the language's formatter, compiles, and passes tests. Each of these should be a separate job and required for merging a PR. 
-- PRs:
-  - For a PR to be eligible for merging, it must at least:
-    - Have a good description of its contained charges.
-    - Compile, have no failingg tests and pass all CI checks.
-    - Have two approvals from other reviewers. 
-    - Auto-approving is _verboten_!
+- For a PR to be eligible for merging, it must at least:
+  - Have a good description of its contained charges.
+  - Compile, have no failingg tests and pass all CI checks.
+  - Have two approvals from other reviewers. 
+  - Auto-approving is _verboten_!
 
 The goal of doing all this for a learning project is to allow reviewers to skip the more basic corrections and address more meaningful corrections, and to make you familiar with the basic expectations and workflow of any project at LambdaClass. 
-
-##### General project guidelines
-- Create a Github repository under your own username.
 
 ---
 
