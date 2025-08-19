@@ -336,19 +336,19 @@ These projects are located in the respective section for their language.
 
 When the time comes to start one of the projects please follow these steps:
 - Create a new github repository under your personal account
-- Setup the project skeleten, which will vary depending on the language and tech stack used for the project. In all cases the skeleton should include:
-  - A `README.md`: Create some initial documentation that explains what the repository contains, 
+- Setup the project skeleton, which will vary depending on the language and tech stack used for the project. In all cases the skeleton should include:
+  - A `README.md`: Create some initial documentation that explains what the repository contains.
   - A `Makefile`: a Makefile with standard targets (`build`, `run`, `test`) will allow anyone, regardless of familiarity with the commands specific to your language, to run the project.
-  - A code skeleton: even a "hello, world!" program will allow exercising the build, running, and testing targets 
-  - CI: Part of learning a language or tool includes knowing how to automate the tasks of ensuring that a code change compiles and passes the tests. Since we host these learning projects on Github, the initial PR should include configuration for Github's Continuous Integration platform Actions to 
-- Issues: once you understand the project, create issues for the identifiable parts of the implementation solution. 
+  - A code skeleton: even a "hello, world!" program will allow exercising the build, running, and testing targets.
+  - CI: Part of learning a language or tool includes knowing how to automate the tasks of ensuring that a code change compiles and passes the tests. Since we host these learning projects on Github, the initial PR should include configuration for Github's Continuous Integration platform Actions to run after each change you commit to a PR.
+  - Issues: once you understand the project, create issues for the identifiable parts of the implementation solution. 
 - Branches:
-  - Immediately create a `dev` branch, in addition to the `main` one. Learning projects have two separate phases: the first is active development. During this phase your PRs should branch from `dev`, and once reviewed by other members of the group following the Hacking Learning Path be merged into `dev`. Once your MVP has been achieved and all the base functionality implemented, create another PR from `dev` into `main` with the entirety of the code developed during the first phase. This PR will be reviewed by more senior members. Address any corrections and once this PR is merged into `main` the project can be considered complete.
+  - Immediately create a `dev` branch, in addition to the `main` one. Learning projects have two separate phases: the first is active development. During this phase your PRs should branch from `dev`, and once reviewed by other members of the group following the Hacking Learning Path be merged into `dev`. Once your MVP has been achieved, and all the base functionality is implemented, create another PR from `dev` into `main` with the entirety of the code developed during the first phase. This PR will be reviewed by more senior members. Address any corrections that the may give you, and once this PR is merged into `main` the project can be considered complete.
   - When tackling an issue, immediately create a branch for it, push it and open a PR in draft mode. Having an open PR that is not yet up to review is a good practice because it allows following the work, and provides a venue for discussion and comments even before a review takes place. 
   - At Lambda, repositories are automatically configured to delete branches once corresponding PRs are merged. Since learning projects are done under your user account, you must either configure this yourself or delete branches manually after merging. Allowing stale branches to accumulate is generally considered a bad practice. 
   - Another requirement is configuring branch protections for `main` and `dev` branches. Your CI must have jobs for ensuring that the code is formatted correctly according to the language's formatter, compiles, and passes tests. Each of these should be a separate job and required for merging a PR. 
 - For a PR to be eligible for merging, it must at least:
-  - Have a good description of its contained charges.
+  - Have a good description of its contained changes.
   - Compile, have no failingg tests and pass all CI checks.
   - Have two approvals from other reviewers. 
   - Auto-approving is _verboten_!
@@ -662,7 +662,7 @@ Other useful resources:
 - The  and  behaviors in the standard library are particularly interesing
 - [StreamData: Property-based testing and data generation](https://elixir-lang.org/blog/2017/10/31/stream-data-property-based-testing-and-data-generation-for-elixir/)
 
-##### Usefule libraries, dependencies and tools
+##### Useful libraries, dependencies and tools
 - [GenStage](https://hexdocs.pm/gen_stage/GenStage.html) Stages are data-exchange steps that send and/or receive data from other stages. When a stage sends data, it acts as a producer. When it receives data, it acts as a consumer. Stages may take both producer and consumer roles at once, acting as consumer producers.
 - [Flow](https://hexdocs.pm/flow/Flow.html) Computational flows with stages.
 - [Ecto](https://hexdocs.pm/ecto/Ecto.html) A toolkit for data mapping and language integrated query.
@@ -680,7 +680,7 @@ Other useful resources:
 - [Quantum](https://hexdocs.pm/quantum/readme.html) Cron-like job scheduler for Elixir.
 - [Sage](https://hexdocs.pm/sage/readme.html) Sage is a dependency-free implementation of the Sagas pattern in pure Elixir and provides a set of additional built-in features.
 - [Recon](https://hexdocs.pm/recon/overview.html) Recon is a library to be dropped into any other Erlang project, to be used to assist DevOps people diagnose problems in production nodes.
-- [Tracer](https://hexdocs.pm/tracer/readme.html) Tracer is a tracing framework for elixir which features an easy to use high level interface, extensibility and safety for using in production
+- [Tracer](https://hexdocs.pm/tracer/readme.html) Tracer is a tracing framework for Elixir which features an easy to use high level interface, extensibility and safety for using in production.
 
 ##### Presentations
 - [The Soul of Erlang and Elixir • Sasa Juric • GOTO 2019](https://www.youtube.com/watch?v=JvBT4XBdoUE)
@@ -753,7 +753,7 @@ Check out the [project description](src/elixir_project_forth.md)
 - [EEP 49: Value-Based Error Handling Mechanisms](https://www.erlang.org/eeps/eep-0049)
 - [Erlang VM Internals Links](https://github.com/AlexanderKaraberov/Erlang-BEAM-Links)
 
-##### Usefule libraries, dependencies and tools
+##### Useful libraries, dependencies and tools
 - [rebar3](https://github.com/erlang/rebar3)
 - [Cowboy](https://ninenines.eu/)
 - [Recon](https://github.com/ferd/recon)
@@ -915,7 +915,7 @@ Some good posts and articles:
   - [Handling Overload](https://ferd.ca/handling-overload.html)
   - [A Commentary on Defining Observability](https://ferd.ca/a-commentary-on-defining-observability.html)
 - [The Log: What every software engineer should know about real-time data's unifying abstraction](https://engineering.linkedin.com/distributed-systems/log-what-every-software-engineer-should-know-about-real-time-datas-unifying)
-- [The most important thign to understand about queues](https://blog.danslimmon.com/2016/08/26/the-most-important-thing-to-understand-about-queues/) 
+- [The most important thing to understand about queues](https://blog.danslimmon.com/2016/08/26/the-most-important-thing-to-understand-about-queues/) 
 - [Make your cluster SWIM](https://www.bartoszsypytkowski.com/make-your-cluster-swim/)
 - [Gossip Glomers: A series of distributed systems challenges brought to you by Fly.io](https://fly.io/dist-sys/)
 - [PingCAP Talent Plan](https://github.com/pingcap/talent-plan)
