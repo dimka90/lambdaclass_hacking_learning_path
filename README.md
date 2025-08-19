@@ -334,7 +334,7 @@ The point of gaining knowledge is to be able to *do* more things and apply them 
 The only way to learn how to do this is via practice, and since small exercises can only exercise very specific things, there are a few larger projects throughout the learning path which newcomers are expected to complete. 
 These projects are located in the respective section for their language.
 
-When the time comes to start one of the projects:
+When the time comes to start one of the projects please follow these steps:
 - Create a new github repository under your personal account
 - Setup the project skeleten, which will vary depending on the language and tech stack used for the project. In all cases the skeleton should include:
   - A `README.md`: Create some initial documentation that explains what the repository contains, 
