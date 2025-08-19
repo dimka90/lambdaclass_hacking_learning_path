@@ -65,9 +65,7 @@ Once you'ved participated in all sessions participation in the reading group is 
 ### Session: Data-Oriented Design
 - [CppCon 2014: Mike Acton "Data-Oriented Design and C++"](https://www.youtube.com/watch?v=rX0ItVEVjHc)
 - [Andrew Kelley Practical Data Oriented Design (DoD)](https://www.youtube.com/watch?v=IroPQ150F6c)
-- [Zig Compiler Internals - Andrew Kelley](https://www.youtube.com/watch?v=8MbREuiLQrM)
 - [Data-Oriented Design Revisited: Type Safety in the Zig Compiler - Matthew Lugg](https://www.youtube.com/watch?v=KOZcJwGdQok)
-- [Modernizing Compiler Design for Carbon Toolchain - Chandler Carruth - CppNow 2023](https://www.youtube.com/watch?v=ZI198eFghJk)
 
 ### Session: Arena Allocator
 - [Untangling Lifetimes: The Arena Allocator](https://www.rfleury.com/p/untangling-lifetimes-the-arena-allocator)

@@ -671,7 +671,7 @@ Other useful resources:
 - [Guardian](https://hexdocs.pm/guardian/readme.html) An authentication library for use with Elixir applications.
 - [Waffle](https://hexdocs.pm/waffle/readme.html) Waffle is a flexible file upload library for Elixir with straightforward integrations for Amazon S3 and ImageMagick.
 - [Samly](https://hexdocs.pm/samly/readme.html) A SAML 2.0 Service Provider Single-Sign-On Authentication library. This Plug library can be used to SAML enable a Plug/Phoenix application.
-- [Broadway](https://hexdocs.pm/broadway/introduction.html) Broadway is a library for building concurrent and multi-stage data ingestion and data processing pipelines with Elixir. Broadway pipelines are concurrent and robust, thanks to the Erlang VM and its actors. It features:
+- [Broadway](https://hexdocs.pm/broadway/introduction.html) Broadway is a library for building concurrent and multi-stage data ingestion and data processing pipelines with Elixir. Broadway pipelines are concurrent and robust, thanks to the Erlang VM and its actors.
 - [Propcheck](https://hexdocs.pm/propcheck/readme.html) PropCheck is a testing library, that provides a wrapper around PropEr, an Erlang based property testing framework in the spirit of QuickCheck.
 - [ExMachina](https://hexdocs.pm/ex_machina/readme.html) ExMachina makes it easy to create test data and associations. It works great with Ecto, but is configurable to work with any persistence library.
 - [Faker](https://hexdocs.pm/faker/readme.html) Faker is a pure Elixir library for generating fake data.
@@ -943,7 +943,16 @@ The book [Designing Data-Intensive Applications](https://www.oreilly.com/library
 #### Algorithmics
 - [Big O notation](https://www.youtube.com/watch?v=gCzOhZ_LUps)
 
-⚠️WIP⚠️
+#### Data-Oriented Design
+- 2014/09/30 [CppCon 2014: Mike Acton "Data-Oriented Design and C++"](https://www.youtube.com/watch?v=rX0ItVEVjHc)
+- 2018/10/26 [CppCon 2018: Stoyan Nikolov “OOP Is Dead, Long Live Data-oriented Design”](https://www.youtube.com/watch?v=yy8jQgmhbAU)
+- 2019/01/18 [Data oriented design in practice - Stoyan Nikolov - Meeting C++ 2018](https://www.youtube.com/watch?v=NWMx1Q66c14)
+- 2019/07/11 [Building a Data-Oriented Future - Mike Acton](https://www.youtube.com/watch?v=u8B3j8rqYMw)
+- 2020/06/29 [Zig Compiler Internals - Andrew Kelley](https://www.youtube.com/watch?v=8MbREuiLQrM)
+- 2021/11/23 [Andrew Kelley Practical Data Oriented Design (DoD)](https://www.youtube.com/watch?v=IroPQ150F6c)
+- 2023/08/17 [Modernizing Compiler Design for Carbon Toolchain - Chandler Carruth - CppNow 2023](https://www.youtube.com/watch?v=ZI198eFghJk)
+- 2024/09/05 [Data-Oriented Design Revisited: Type Safety in the Zig Compiler - Matthew Lugg](https://www.youtube.com/watch?v=KOZcJwGdQok)
+- 2020-07-25 [An introduction to Data Oriented Design with Rust](https://jamesmcm.github.io/blog/intro-dod/) [HN](https://news.ycombinator.com/item?id=24506744)
 
 ---
 ### Machine Learning
