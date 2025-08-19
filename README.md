@@ -19,6 +19,7 @@
       - [Documentation](#documentation)
       - [Group Readings](#group-readings)
       - [Community projects](#community-projects)
+      - [Learning Projects](#learning-projects)
       - [Cryptography](#cryptography)
     - [Technical Foundations](#technical-foundations)
       - [Development Environment](#development-environment)
@@ -44,10 +45,9 @@
   - [Part II Specific Topics](#part-ii-specific-topics)
     - [Python](#python)
     - [The BEAM Ecosystem](#the-beam-ecosystem)
-      - [Phoenix](#phoenix)
-      - [Projects](#projects)
-      - [OpenAPI](#openapi)
-      - [ExCheck (QuickCheck)](#excheck-(quickcheck))
+      - [Elixir](#elixir)
+      - [Erlang](#Erlang)
+      - [Gleam](#gleam)
     - [Rust](#rust)
       - [Exercise - Game of Life](#exercise---game-of-life)
       - [Exercise - Rusty Merkle Tree](#exercise---rusty-merkle-tree)
@@ -327,8 +327,33 @@ We organize activities where we share thoughts and interests with anyone who wan
 - [BuzzConf](https://buzzconf.org/) A conference for developers, by developers. Past talks [here](https://www.youtube.com/channel/UCE6_WdRbp8pN2IPNwXcu9Ww/videos).
 - [Papers We Love Buenos Aires](https://github.com/papers-we-love/buenos-aires) Once a month we organize a meeting where we discuss scientific papers we love. Join us on [Telegram](https://t.me/pwlba).
 
-##### General project guidelines
-- Create a Github repository under your own username.
+#### Learning Projects
+
+The learning path is not just a pile of material to read through, and there is no exam at the end with questions you need to answer. 
+The point of gaining knowledge is to be able to *do* more things and apply them in problem solving.
+The only way to learn how to do this is via practice, and since small exercises can only exercise very specific things, there are a few larger projects throughout the learning path which newcomers are expected to complete. 
+These projects are located in the respective section for their language.
+
+When the time comes to start one of the projects please follow these steps:
+- Create a new github repository under your personal account
+- Setup the project skeleton, which will vary depending on the language and tech stack used for the project. In all cases the skeleton should include:
+  - A `README.md`: Create some initial documentation that explains what the repository contains.
+  - A `Makefile`: a Makefile with standard targets (`build`, `run`, `test`) will allow anyone, regardless of familiarity with the commands specific to your language, to run the project.
+  - A code skeleton: even a "hello, world!" program will allow exercising the build, running, and testing targets.
+  - CI: Part of learning a language or tool includes knowing how to automate the tasks of ensuring that a code change compiles and passes the tests. Since we host these learning projects on Github, the initial PR should include configuration for Github's Continuous Integration platform Actions to run after each change you commit to a PR.
+  - Issues: once you understand the project, create issues for the identifiable parts of the implementation solution. 
+- Branches:
+  - Immediately create a `dev` branch, in addition to the `main` one. Learning projects have two separate phases: the first is active development. During this phase your PRs should branch from `dev`, and once reviewed by other members of the group following the Hacking Learning Path be merged into `dev`. Once your MVP has been achieved, and all the base functionality is implemented, create another PR from `dev` into `main` with the entirety of the code developed during the first phase. This PR will be reviewed by more senior members. Address any corrections that the may give you, and once this PR is merged into `main` the project can be considered complete.
+  - When tackling an issue, immediately create a branch for it, push it and open a PR in draft mode. Having an open PR that is not yet up to review is a good practice because it allows following the work, and provides a venue for discussion and comments even before a review takes place. 
+  - At Lambda, repositories are automatically configured to delete branches once corresponding PRs are merged. Since learning projects are done under your user account, you must either configure this yourself or delete branches manually after merging. Allowing stale branches to accumulate is generally considered a bad practice. 
+  - Another requirement is configuring branch protections for `main` and `dev` branches. Your CI must have jobs for ensuring that the code is formatted correctly according to the language's formatter, compiles, and passes tests. Each of these should be a separate job and required for merging a PR. 
+- For a PR to be eligible for merging, it must at least:
+  - Have a good description of its contained changes.
+  - Compile, have no failingg tests and pass all CI checks.
+  - Have two approvals from other reviewers. 
+  - Auto-approving is _verboten_!
+
+The goal of doing all this for a learning project is to allow reviewers to skip the more basic corrections and address more meaningful corrections, and to make you familiar with the basic expectations and workflow of any project at LambdaClass. 
 
 ---
 
@@ -396,6 +421,7 @@ Also, while you shouldn't be blind to the future, avoid investing time and effor
 - [Software Design is Knowledge Building](https://olano.dev/blog/software-design-is-knowledge-building/)
 - [Write Code that is easy to delete not easy to extend](https://programmingisterrible.com/post/139222674273/write-code-that-is-easy-to-delete-not-easy-to)
 - [Negotiable Abstractions](https://ferd.ca/negotiable-abstractions.html)
+- [How complex systems fail](https://www.adaptivecapacitylabs.com/HowComplexSystemsFail.pdf)
 
 #### The Unix Philosophy
 - [Unix Timeline](https://upload.wikimedia.org/wikipedia/commons/c/cd/Unix_timeline.en.svg)
@@ -512,6 +538,11 @@ In addition, you can tell 1password to manage it as well: [instructions](https:/
 Once your system is configured to use the 1password SSH agent with your key, you can configure your local git client to use the SSH key to sign your commits, ensuring that your authorship of the code is verified.
 You can find the instructions [here](https://developer.1password.com/docs/ssh/git-commit-signing/).
 
+If you have existing commits that you need to push but have not been signed yet you can run the following command:
+```
+git rebase -i --exec "git commit --amend --no-edit -S" main
+```
+
 - Progress in any project must be pushed every day. This must be done within a branch of the master repository and a Pull Request (PR) must be opened for reviewing the code, previous to merging the branch to master.
 - Doc files should always be added via pull request.
   - Be sure those files are written in Markdown. 
@@ -605,40 +636,12 @@ You can find the instructions [here](https://developer.1password.com/docs/ssh/gi
 ---
 ### The BEAM Ecosystem
 
-**Installing Erlang and Elixir**
-- On Mac distributions, you can just `brew install erlang` to get the latest installation. In case of needing a specific version you can use asdf and install with `asdf install erlang [VERSION_DESIRED]`.
-- Same can be achieved with Elixir through the same means `brew install elixir` for the latest version, use `asdf` for a specific version.
-- For other distributions, check [here](https://learnyousomeerlang.com/introduction) for Erlang and [here](https://elixir-lang.org/install.html#distributions) for Elixir.
+In the beginning, the BEAM and Erlang were almost synonymous, there were no other languages that ran on the BEAM virtual machine and ERTS. In fact the core of the platform is the ERTS -- the Erlang Run Time System. In time, others have emerged such as LFE, Elixir, and Gleam. 
+Today, the most common gateway into the ecosystem is learning how to be productive with Elixir, learning the serial (non-concurrent) and functional programming aspects first, and then the support for concurrency, the common concurrency and distribution patterns provided by the OTP. This is usually eventually complemented by learning Erlang to be able to understand and read code from common dependencies (e.g. Cowboy).
+Lately, Gleam has also matured and is a very interesting possibility. 
 
-**Introductory**
-- [The Zen of Erlang](https://ferd.ca/the-zen-of-erlang.html) Erlang base principles and good practices
-- [When would you choose Erlang?](https://web.archive.org/web/20230529050818/https://blog.troutwine.us/2013/07/10/choose-erlang/)
-- [An Open Letter to the Erlang Beginner](https://ferd.ca/an-open-letter-to-the-erlang-beginner-or-onlooker.html) Erlang's quirks and perks
-- [Where Erlang blooms](https://ferd.ca/rtb-where-erlang-blooms.html)
-
-**Language Tutorial**
-- [Learn You Some Erlang](https://learnyousomeerlang.com/content)
-
-**Additional Theory**
-- [How Erlang does Scheduling](http://jlouisramblings.blogspot.com/2013/01/how-erlang-does-scheduling.html)
-- [Stacking theory for systems design](https://medium.com/@jlouis666/stacking-theory-for-systems-design-2450e6300689)
-- [EEP 49: Value-Based Error Handling Mechanisms](https://www.erlang.org/eeps/eep-0049)
-
-**Some coding guidelines**
-- Use rebar3. Include the binary in the repository so it's not an external dependency and the tested version is used. rebar3 is not used directly but through make targets.
-- Support the most recent Erlang version.
-- When building libraries, try to make them both easily usable from the shell and easily configurable via application environment.
-- Indent with two spaces.
-- Avoid using header files (.hrl)
-- Supervised processes provide guarantees in their initialization phase, not a best effort. [If you expect failure to happen on an external service, do not make its presence a guarantee of your system](https://ferd.ca/it-s-about-the-guarantees.html).
-- Try to avoid timer:sleep on tests, [ktn_task:wait_for_success](https://github.com/lambdaclass/erlang-katana/blob/master/src/ktn_task.erl#L28) can be a better option. More on this [here](https://medium.com/erlang-battleground/the-missing-testing-tip-628686ebbbda).
-- Prefer maps to records.
-
-**Exercises**
-- [Erlings](https://github.com/lambdaclass/erlings/)
-- [Erlang workshop](https://github.com/lambdaclass/erlang_workshop)
-
-**Elixir**
+#### Elixir
+- [Elixir Homepage](https://elixir-lang.org)
 - Read the entire `Getting started` section starting at [the introduction](https://elixir-lang.org/getting-started/introduction.html)  EXCEPT:
   - "Module attributes"
   - "Protocols"
@@ -652,38 +655,125 @@ In addition, read:
 - the documentation for ExUnit (https://hexdocs.pm/ex_unit/ExUnit.html
 
 Other useful resources:
-- "Programming Elixir" by Dave Thomas
+- ["Programming Elixir"](https://pragprog.com/titles/elixir16/programming-elixir-1-6/) by Dave Thomas
+- ["Elixir in Action"](https://www.manning.com/books/elixir-in-action-third-edition) by Saša Jurić
 - [Learning Functional Programming With Elixir](https://pragprog.com/titles/cdc-elixir/learn-functional-programming-with-elixir/)
   - Recommended reading: Chapters 3, 4, 5.
+- The  and  behaviors in the standard library are particularly interesing
 - [StreamData: Property-based testing and data generation](https://elixir-lang.org/blog/2017/10/31/stream-data-property-based-testing-and-data-generation-for-elixir/)
 
-#### Phoenix
-- [Phoenix Official Guides](https://hexdocs.pm/phoenix/overview.html)
-  - Introduction
-    - Except for _Community_
-  - Guides
-    - Except for _Asset Management_
+##### Useful libraries, dependencies and tools
+- [GenStage](https://hexdocs.pm/gen_stage/GenStage.html) Stages are data-exchange steps that send and/or receive data from other stages. When a stage sends data, it acts as a producer. When it receives data, it acts as a consumer. Stages may take both producer and consumer roles at once, acting as consumer producers.
+- [Flow](https://hexdocs.pm/flow/Flow.html) Computational flows with stages.
+- [Ecto](https://hexdocs.pm/ecto/Ecto.html) A toolkit for data mapping and language integrated query.
+- [Phoenix](https://hexdocs.pm/phoenix/overview.html) Phoenix is a web framework for the Elixir programming language
+- [Plug](https://hexdocs.pm/plug/readme.html) Plug is a specification for composing web applications with functions.
+- [Guardian](https://hexdocs.pm/guardian/readme.html) An authentication library for use with Elixir applications.
+- [Waffle](https://hexdocs.pm/waffle/readme.html) Waffle is a flexible file upload library for Elixir with straightforward integrations for Amazon S3 and ImageMagick.
+- [Samly](https://hexdocs.pm/samly/readme.html) A SAML 2.0 Service Provider Single-Sign-On Authentication library. This Plug library can be used to SAML enable a Plug/Phoenix application.
+- [Broadway](https://hexdocs.pm/broadway/introduction.html) Broadway is a library for building concurrent and multi-stage data ingestion and data processing pipelines with Elixir. Broadway pipelines are concurrent and robust, thanks to the Erlang VM and its actors.
+- [Propcheck](https://hexdocs.pm/propcheck/readme.html) PropCheck is a testing library, that provides a wrapper around PropEr, an Erlang based property testing framework in the spirit of QuickCheck.
+- [ExMachina](https://hexdocs.pm/ex_machina/readme.html) ExMachina makes it easy to create test data and associations. It works great with Ecto, but is configurable to work with any persistence library.
+- [Faker](https://hexdocs.pm/faker/readme.html) Faker is a pure Elixir library for generating fake data.
+- [Hammer](https://hexdocs.pm/hammer/readme.html) Hammer is a rate-limiter for Elixir with pluggable storage backends. Hammer enables users to set limits on actions performed within specified time intervals, applying per-user or global limits on API requests, file uploads, and more.
+- [Oban](https://hexdocs.pm/oban/Oban.html) Oban is a robust background job framework which uses PostgreSQL, MySQL, or SQLite3 for persistence.
+- [Quantum](https://hexdocs.pm/quantum/readme.html) Cron-like job scheduler for Elixir.
+- [Sage](https://hexdocs.pm/sage/readme.html) Sage is a dependency-free implementation of the Sagas pattern in pure Elixir and provides a set of additional built-in features.
+- [Recon](https://hexdocs.pm/recon/overview.html) Recon is a library to be dropped into any other Erlang project, to be used to assist DevOps people diagnose problems in production nodes.
+- [Tracer](https://hexdocs.pm/tracer/readme.html) Tracer is a tracing framework for Elixir which features an easy to use high level interface, extensibility and safety for using in production.
+
+##### Presentations
+- [The Soul of Erlang and Elixir • Sasa Juric • GOTO 2019](https://www.youtube.com/watch?v=JvBT4XBdoUE)
+
+##### Phoenix
+- [Phoenix Official Guides](https://www.phoenixframework.org/)
+  - Introduction (Except for _Community_)
+  - Guides (Except for _Asset Management_)
   - Authentication
-  - Testing
-    - Except for _Testing Channels_
+  - Testing (Except for _Testing Channels_)
 - [Phoenix Chat Example](https://github.com/dwyl/phoenix-chat-example)
 
-**Installing Phoenix**
-- For Phoenix, all dependencies and versions needed for installing can be found [here](https://hexdocs.pm/phoenix/installation.html). Postgres is recommended as the de facto database. To install older versions of Erlang and Elixir, use `asdf` to install them.
-- If `asdf` doesn't let you install a previous version of Erlang [this](https://github.com/asdf-vm/asdf-erlang/issues/221) might help.
-
-#### Projects
-Check out the [project description](src/elixir_project_forth.md)
-
-#### OpenAPI
+##### OpenAPI
 The OpenAPI Specification (OAS) defines a standard, programming language-agnostic interface description for HTTP APIs, which allows both humans and computers to discover and understand the capabilities of a service without requiring access to source code, additional documentation, or inspection of network traffic.
 - [Open API Specifications for Elixir Plug applications](https://github.com/open-api-spex/open_api_spex)
 - [How to design better APIs. 15 language-agnostic, actionable tips on REST API design](https://r.bluethl.net/how-to-design-better-apis)
 - [Swagger integration to Phoenix framework](https://github.com/xerions/phoenix_swagger)
 - [Auto generate and run tests using swagger/OpenAPI spec, no coding needed](https://github.com/meqaio/swagger_meqa)
 
-#### ExCheck (QuickCheck)
+##### ExCheck (QuickCheck)
 QuickCheck is a testing method (formerly a [Haskell library](https://hackage.haskell.org/package/QuickCheck) that got [adapted to many more languages](https://hypothesis.works/articles/quickcheck-in-every-language/)) that consists of defining expected properties of your program or function, and then testing it extensively against randomly-generated variables automatically. [ExCheck](https://github.com/parroty/excheck) is a property-based testing library that resembles QuickCheck.
+
+##### Project
+Check out the [project description](src/elixir_project_forth.md)
+
+#### Erlang
+- [Erlang Homepage](https://www.erlang.org/)
+- [Learn You Some Erlang](https://learnyousomeerlang.com)
+- [Erlang in Anger](https://www.erlang-in-anger.com/)
+
+##### Useful articles:
+- [When would you choose Erlang?](https://web.archive.org/web/20230529050818/https://blog.troutwine.us/2013/07/10/choose-erlang/)
+- [Stacking theory for systems design](https://medium.com/@jlouis666/stacking-theory-for-systems-design-2450e6300689)
+- [Erlang Blog](https://www.erlang.org/blog) Highlights
+  - [Exploring the Compiler Using the 'time' Option](https://www.erlang.org/blog/compiler-time-option/)
+  - [Lost in Translation (Exploring the Compiler's Front End)](https://www.erlang.org/blog/compiler-lost-in-translation/)
+  - [Memory instrumentation in OTP 21](https://www.erlang.org/blog/memory-instrumentation-in-otp-21/)
+  - [Core Erlang by Example](https://www.erlang.org/blog/core-erlang-by-example/)
+  - [Core Erlang Optimizations](https://www.erlang.org/blog/core-erlang-optimizations/)
+  - [Core Erlang Wrap Up](https://www.erlang.org/blog/core-erlang-wrapup/)
+  - [Interpreter optimization](https://www.erlang.org/blog/interpreter-optimizations/)
+  - [A Brief History of the BEAM Compiler](https://www.erlang.org/blog/beam-compiler-history/)
+  - [Optimization Traps and Pitfalls](https://www.erlang.org/blog/opt-traps-and-pitfalls/)
+  - [Introduction to SSA](https://www.erlang.org/blog/introducing-ssa/)
+  - [Digging deeper in SSA](https://www.erlang.org/blog/digging-deeper-in-ssa/)
+  - [SSA History](https://www.erlang.org/blog/ssa-history/)
+  - [Retiring old performance pitfalls](https://www.erlang.org/blog/retired-pitfalls-22/)
+  - [Clever use of persistent_term](https://www.erlang.org/blog/persistent_term/)
+  - [A brief introduction to BEAM](https://www.erlang.org/blog/a-brief-beam-primer/)
+  - [A closer look at the interpreter](https://www.erlang.org/blog/a-closer-look-at-the-interpreter/)
+  - [A first look at the JIT](https://www.erlang.org/blog/a-first-look-at-the-jit/)
+  - [Further adventures in the JIT](https://www.erlang.org/blog/jit-part-2/)
+  - [The Road to the JIT](https://www.erlang.org/blog/the-road-to-the-jit/)
+  - [A few notes on message passing](https://www.erlang.org/blog/message-passing/)
+  - [Decentralized ETS Counters for Better Scalability](https://www.erlang.org/blog/scalable-ets-counters/)
+  - [Type-Based Optimizations in the JIT](https://www.erlang.org/blog/type-based-optimizations-in-the-jit/)
+  - [More Optimizations in the Compiler and JIT](https://www.erlang.org/blog/more-optimizations/)
+  - [The Optimizations in Erlang/OTP 27](https://www.erlang.org/blog/optimizations/)
+- Ferd's Blog Highlights
+  - [An Open Letter to the Erlang Beginner](https://ferd.ca/an-open-letter-to-the-erlang-beginner-or-onlooker.html) Erlang's quirks and perks
+  - [Erlang's Tail Recursion is Not a Silver Bullet](https://ferd.ca/erlang-s-tail-recursion-is-not-a-silver-bullet.html)
+  - [RTB: Where Erlang blooms](https://ferd.ca/rtb-where-erlang-blooms.html)
+  - [The Zen of Erlang](https://ferd.ca/the-zen-of-erlang.html) Erlang base principles and good practices
+  - [Ten Years of Erlang](https://ferd.ca/ten-years-of-erlang.html)
+
+##### Internals:
+- [Erlang Run-Time System Application (ERTS) Internal Docs](https://www.erlang.org/docs/23/apps/erts/internal_docs)
+- [The BEAM Book](https://blog.stenmans.org/theBeamBook/)
+- [How Erlang does Scheduling](http://jlouisramblings.blogspot.com/2013/01/how-erlang-does-scheduling.html)
+- [EEP 49: Value-Based Error Handling Mechanisms](https://www.erlang.org/eeps/eep-0049)
+- [Erlang VM Internals Links](https://github.com/AlexanderKaraberov/Erlang-BEAM-Links)
+
+##### Useful libraries, dependencies and tools
+- [rebar3](https://github.com/erlang/rebar3)
+- [Cowboy](https://ninenines.eu/)
+- [Recon](https://github.com/ferd/recon)
+
+##### Some coding guidelines
+- Use rebar3. Include the binary in the repository so it's not an external dependency and the tested version is used. rebar3 is not used directly but through make targets.
+- Support the most recent Erlang version.
+- When building libraries, try to make them both easily usable from the shell and easily configurable via application environment.
+- Indent with two spaces.
+- Avoid using header files (.hrl)
+- Supervised processes provide guarantees in their initialization phase, not a best effort. [If you expect failure to happen on an external service, do not make its presence a guarantee of your system](https://ferd.ca/it-s-about-the-guarantees.html).
+- Try to avoid timer:sleep on tests, [ktn_task:wait_for_success](https://github.com/lambdaclass/erlang-katana/blob/master/src/ktn_task.erl#L28) can be a better option. More on this [here](https://medium.com/erlang-battleground/the-missing-testing-tip-628686ebbbda).
+- Prefer maps to records.
+
+**Exercises**
+- [Erlings](https://github.com/lambdaclass/erlings/)
+- [Erlang workshop](https://github.com/lambdaclass/erlang_workshop)
+
+#### Gleam
+- [Gleam Homepage](https://gleam.run/)
 
 ---
 ### Rust
@@ -807,20 +897,39 @@ Kubernetes services, support, and tools are widely available.
 
 ---
 ### Distributed Systems
+
+There are some good books on the general theory and practice of building distributed systems:
+- "Distributed Systems: Concepts and Design" (Colouris)
+- "Distributed Systems Principles and Paradigms" (Tanenbaum)
+- "Introduction to Reliable and Secure Distributed Programming" (Carlos Varela, Cachin) 
+- "[Distributed Systems for System Architects](https://www.amazon.com/Distributed-Architects-Advances-Computing-Middleware/dp/0792372662)" (Paulo Veríssimo, Luís Rodrigues)
+
+Some good posts and articles:
+- [Notes on Distributed Systems for Young Bloods](https://www.somethingsimilar.com/2013/01/14/notes-on-distributed-systems-for-young-bloods/)
+- [Christopher Meiklejohn: Readings in distributed systems](https://christophermeiklejohn.com/distributed/systems/2013/07/12/readings-in-distributed-systems.html)
+- Ferd's Blog Highlights:
+  - [A Distributed Systems Reading List](https://ferd.ca/a-distributed-systems-reading-list.html)
+  - [Beating the CAP Theorem Checklist](https://ferd.ca/beating-the-cap-theorem-checklist.html)
+  - [Queues Don't Fix Overload](https://ferd.ca/queues-don-t-fix-overload.html)
+  - [Lessons Learned while Working on Large-Scale Server Software](https://ferd.ca/lessons-learned-while-working-on-large-scale-server-software.html)
+  - [Handling Overload](https://ferd.ca/handling-overload.html)
+  - [A Commentary on Defining Observability](https://ferd.ca/a-commentary-on-defining-observability.html)
 - [The Log: What every software engineer should know about real-time data's unifying abstraction](https://engineering.linkedin.com/distributed-systems/log-what-every-software-engineer-should-know-about-real-time-datas-unifying)
+- [The most important thing to understand about queues](https://blog.danslimmon.com/2016/08/26/the-most-important-thing-to-understand-about-queues/) 
 - [Make your cluster SWIM](https://www.bartoszsypytkowski.com/make-your-cluster-swim/)
+- [Gossip Glomers: A series of distributed systems challenges brought to you by Fly.io](https://fly.io/dist-sys/)
+- [PingCAP Talent Plan](https://github.com/pingcap/talent-plan)
+- [TinyKV](https://github.com/talent-plan/tinykv)
+- [Raft](https://raft.github.io/raft.pdf)
+- [HyParView](https://www.bartoszsypytkowski.com/hyparview/)
+- [PlumTree](https://www.bartoszsypytkowski.com/plumtree/)
+- ["Turning the database inside out with Apache Samza" by Martin Kleppmann](https://www.youtube.com/watch?v=fU9hR3kiOK0)
 
 #### Designing Data-Intensive Applications
 The book [Designing Data-Intensive Applications](https://www.oreilly.com/library/view/designing-data-intensive-applications/9781491903063/) is an excellent introduction to many topics related to building scalable and fault-tolerant systems. It provides a decent map of the territory and jumping-off points for anyone beginning to understand how systems are architected to provide these characteristics since it provides many references for further reading.
 
 #### CRDTs
-- https://www.bartoszsypytkowski.com/the-state-of-a-state-based-crdts/
-- https://www.bartoszsypytkowski.com/hyparview/
-- https://www.bartoszsypytkowski.com/plumtree/
-- https://www.bartoszsypytkowski.com/the-state-of-a-state-based-crdts/
-- ["Turning the database inside out with Apache Samza" by Martin Kleppmann](https://www.youtube.com/watch?v=fU9hR3kiOK0)
-- https://raft.github.io/raft.pdf
-- https://www.somethingsimilar.com/2013/01/14/notes-on-distributed-systems-for-young-bloods/
+- [The State of State Based CRDTs](https://www.bartoszsypytkowski.com/the-state-of-a-state-based-crdts/)
 
 ### Observability
 
@@ -834,7 +943,16 @@ The book [Designing Data-Intensive Applications](https://www.oreilly.com/library
 #### Algorithmics
 - [Big O notation](https://www.youtube.com/watch?v=gCzOhZ_LUps)
 
-⚠️WIP⚠️
+#### Data-Oriented Design
+- 2014/09/30 [CppCon 2014: Mike Acton "Data-Oriented Design and C++"](https://www.youtube.com/watch?v=rX0ItVEVjHc)
+- 2018/10/26 [CppCon 2018: Stoyan Nikolov “OOP Is Dead, Long Live Data-oriented Design”](https://www.youtube.com/watch?v=yy8jQgmhbAU)
+- 2019/01/18 [Data oriented design in practice - Stoyan Nikolov - Meeting C++ 2018](https://www.youtube.com/watch?v=NWMx1Q66c14)
+- 2019/07/11 [Building a Data-Oriented Future - Mike Acton](https://www.youtube.com/watch?v=u8B3j8rqYMw)
+- 2020/06/29 [Zig Compiler Internals - Andrew Kelley](https://www.youtube.com/watch?v=8MbREuiLQrM)
+- 2021/11/23 [Andrew Kelley Practical Data Oriented Design (DoD)](https://www.youtube.com/watch?v=IroPQ150F6c)
+- 2023/08/17 [Modernizing Compiler Design for Carbon Toolchain - Chandler Carruth - CppNow 2023](https://www.youtube.com/watch?v=ZI198eFghJk)
+- 2024/09/05 [Data-Oriented Design Revisited: Type Safety in the Zig Compiler - Matthew Lugg](https://www.youtube.com/watch?v=KOZcJwGdQok)
+- 2020-07-25 [An introduction to Data Oriented Design with Rust](https://jamesmcm.github.io/blog/intro-dod/) [HN](https://news.ycombinator.com/item?id=24506744)
 
 ---
 ### Machine Learning
