@@ -55,25 +55,12 @@ Once you'ved participated in all sessions participation in the reading group is 
 ### Session: N+1 Query Problem
 - [What is the N+1 Query Problem and How to Solve it?](https://planetscale.com/blog/what-is-n-1-query-problem-and-how-to-solve-it)
 
+## Optional Sessions
+
 ### Session: Problems with Distributed Systems 
 - Chapter 8: The trouble with Distributed Systems of "Designing Data-Intensive Applications" by Martin Kleppman.
 - [The Eight Fallacies of Distributed Computing](https://medium.com/geekculture/the-eight-fallacies-of-distributed-computing-44d766345ddb)
 - [Fallacies of Distributed Computing Explained](https://www.researchgate.net/publication/322500050_Fallacies_of_Distributed_Computing_Explained)
-
-## Unit 3 Performance Engineering
-
-### Session: Arena Allocator
-- [Untangling Lifetimes: The Arena Allocator](https://www.rfleury.com/p/untangling-lifetimes-the-arena-allocator)
-
-## Unit 4 Crypto & Blockchain
-
-## Unit 5 Gaming
-
-### Session: The Tech of Planetary Annihilation's Chrono Cam
-- [The Tech of Planetary Annihilation's Chrono Cam](https://www.forrestthewoods.com/blog/tech_of_planetary_annihilation_chrono_cam/)
-- [Q & A](https://www.forrestthewoods.com/blog/qa_planetary_annihilation_chrono_cam/)
-
-## Optional Sessions
 
 ### Session: Data-Oriented Design
 - [CppCon 2014: Mike Acton "Data-Oriented Design and C++"](https://www.youtube.com/watch?v=rX0ItVEVjHc)
@@ -81,6 +68,13 @@ Once you'ved participated in all sessions participation in the reading group is 
 - [Zig Compiler Internals - Andrew Kelley](https://www.youtube.com/watch?v=8MbREuiLQrM)
 - [Data-Oriented Design Revisited: Type Safety in the Zig Compiler - Matthew Lugg](https://www.youtube.com/watch?v=KOZcJwGdQok)
 - [Modernizing Compiler Design for Carbon Toolchain - Chandler Carruth - CppNow 2023](https://www.youtube.com/watch?v=ZI198eFghJk)
+
+### Session: Arena Allocator
+- [Untangling Lifetimes: The Arena Allocator](https://www.rfleury.com/p/untangling-lifetimes-the-arena-allocator)
+
+### Session: The Tech of Planetary Annihilation's Chrono Cam
+- [The Tech of Planetary Annihilation's Chrono Cam](https://www.forrestthewoods.com/blog/tech_of_planetary_annihilation_chrono_cam/)
+- [Q & A](https://www.forrestthewoods.com/blog/qa_planetary_annihilation_chrono_cam/)
 
 ### Session: Transforming the Future
 - [Transforming the Future with Zero-Knowledge Proofs, Fully Homomorphic Encryption and new Distributed Systems algorithms](https://blog.lambdaclass.com/transforming-the-future-with-zero-knowledge-proofs-fully-homomorphic-encryption-and-new-distributed-systems-algorithms/)
